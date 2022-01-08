@@ -32,14 +32,12 @@ jobs:
       - name: Run PackSquash
         uses: ComunidadAylas/PackSquash-action@v2
         with:
-          path: "temp"
-          options_file: config.toml
+          path: temp
+          transcode_ogg: false
 
       - name: Hashing Resource Pack
         run: |
-          ls /var/lib/packsquash
-          ls .
-          tree .
+          mv pack.zip build/rp-production.zip
           sha1sum build/rp-production.zip | awk '{print toupper($1)}' > build/rp-production.sha1
 
       - name: Deploy

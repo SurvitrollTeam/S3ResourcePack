@@ -1,4 +1,0 @@
-pack_directory = "./temp"
-
-['**/cave*?.ogg']
-transcode_ogg = false
