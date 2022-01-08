@@ -37,6 +37,9 @@ jobs:
 
       - name: Hashing Resource Pack
         run: |
+          ls /var/lib/packsquash
+          ls .
+          tree .
           sha1sum build/rp-production.zip | awk '{print toupper($1)}' > build/rp-production.sha1
 
       - name: Deploy

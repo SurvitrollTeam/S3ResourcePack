@@ -1,5 +1,4 @@
 pack_directory = "./temp"
-output_file_path = "./build/rp-production.zip"
 
 ['**/cave*?.ogg']
 transcode_ogg = false
