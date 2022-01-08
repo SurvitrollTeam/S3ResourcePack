@@ -9,7 +9,7 @@ if (fs.existsSync(TMP)) {
 	fs.rmSync(TMP, { recursive: true, force: true });
 }
 
-for (const { path, type } of sources()) {
+for (const { path, type } of sources().reverse()) {
 	const name = basename(path);
 	switch (type) {
 		case 'folder':
