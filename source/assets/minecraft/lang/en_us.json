@@ -1,0 +1,18 @@
+{
+    "survitroll.magic.selectedspell": "Selected Spell: %s",
+
+    "enchantment.survitroll.flim_flam": "Flim Flam",
+    "enchantment.survitroll.shulker_shell": "Colombiano",
+
+    "customblocks.item.survitroll:jeb_block.name": "Jeb Block",
+    "survitroll.item.terrablade": "Terrablade",
+    "survitroll.item.chorus_pearl": "Chorus Pearl",
+    "survitroll.item.cleaning_arrow": "Arrow of Cleaning",
+    "survitroll.item.splash_combat_milk": "Splash Combat Milk",
+    "survitroll.item.splash_combat_milk.cum": "Splash Potion of Cum",
+
+    "death.attack.spikes": "%1$s fell into spikes",
+    "death.attack.spikes.player": "%1$s walked into spikes whilst trying to escape %2$s",
+
+    "subtitles.entity.mona_china.nya": "Uhh... what?"
+}

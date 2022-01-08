@@ -1,0 +1,14 @@
+{
+    "custom.mona_china.nya": {
+        "sounds": [{ "name": "stereo/nya" }],
+        "subtitle": "subtitles.entity.mona_china.nya"
+    },
+    "old.entity.player.hurt": {
+        "sounds": [
+			{ "name": "old/entity/player/hurt/hit1" },
+			{ "name": "old/entity/player/hurt/hit2" },
+			{ "name": "old/entity/player/hurt/hit3" }
+		],
+        "subtitle": "subtitles.entity.player.hurt"
+    }
+}

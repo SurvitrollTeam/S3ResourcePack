@@ -1,0 +1,14 @@
+{
+	"outputDir": "./build/",
+	"tempDir": "./temp/",
+	"sources": [
+		{
+			"path": "source/",
+			"type": "folder"
+		},
+		{
+			"path": "VanillaTweaks_r135756.zip",
+			"type": "zip"
+		}
+	]
+}

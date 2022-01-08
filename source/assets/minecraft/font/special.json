@@ -1,0 +1,9 @@
+{
+        "providers": [{
+            "file": "minecraft:sans.ttf",
+            "type": "ttf",
+            "shift": [0, 1],
+ 			"size": 10.0,
+ 			"oversample": 20.0
+        }]
+}

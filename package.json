@@ -1,0 +1,19 @@
+{
+  "name": "rp-builder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "scripts/build.js",
+  "scripts": {
+    "extract": "node scripts/extract.js",
+    "build": "node scripts/build.js"
+  },
+  "keywords": [],
+  "author": "MMonkeyKiller",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^17.0.8"
+  },
+  "dependencies": {
+    "jszip": "^3.7.1"
+  }
+}

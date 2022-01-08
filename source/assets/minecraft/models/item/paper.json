@@ -1,0 +1,10 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "minecraft:item/paper"
+  },
+  "overrides": [
+    { "predicate": { "custom_model_data": 1 }, "model": "custom/item/wooden_staff" },
+    { "predicate": { "custom_model_data": 1000 }, "model": "custom/block/jeb_block" }
+]
+}
