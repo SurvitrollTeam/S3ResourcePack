@@ -26,7 +26,7 @@ jobs:
       #   run: npm run build
 
       - name: Run PackSquash
-        uses: sya-ri/action-PackSquash@v1.0.0
+        uses: ComunidadAylas/PackSquash-action@v2
         with:
           path: temp
           output: build/rp-production.zip
