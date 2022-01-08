@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { basename, join, dirname } = require('path');
+const { basename, join, dirname, relative } = require('path');
 const JSZip = require("jszip");
 
 const { sources, tempDir } = require('./config');
@@ -13,11 +13,11 @@ for (const { path, type } of sources()) {
 	const name = basename(path);
 	switch (type) {
 		case 'folder':
-			console.log(`📋 Copying ${name}/'s content into ${basename(TMP)}`);
+			console.log(`📋 Copying ${name}/ content into ${basename(TMP)}/`);
 			copyFolderContent(path, TMP);
 			break;
 		case 'zip':
-			console.log(`📦 Extracting ${name} into ${basename(TMP)}`);
+			console.log(`📦 Extracting ${name} into ${basename(TMP)}/`);
 			extract(path, TMP);
 			break;
 		default:
@@ -37,7 +37,8 @@ function extract(zipFile, outputDir) {
 			const data = await zip.file(file).async('nodebuffer'),
 				path = join(outputDir, file);
 			fs.mkdirSync(dirname(path), { recursive: true });
-			fs.writeFileSync(path, data);
+			appendJSON(path, data);
+			//fs.writeFileSync(path, data);
 		}
 	});
 }
@@ -48,6 +49,24 @@ function copyFolderContent(inputDir, outputDir) {
 	dir.forEach(file => {
 		const child = join(inputDir, file), target = join(outputDir, file);
 		if (fs.lstatSync(child).isDirectory()) copyFolderContent(child, target);
-		else fs.copyFileSync(child, target);
+		else appendJSON(target, fs.readFileSync(child)); //fs.copyFileSync(child, target);
 	});
+}
+
+function appendJSON(file, newData) {
+	if (fs.existsSync(file)) {
+		const data = fs.readFileSync(file);
+		if (isJSON(data) && isJSON(newData)) {
+			console.log("📎 Combining JSON of " + relative(TMP, file));
+			newData = JSON.stringify(Object.assign({}, JSON.parse(data), JSON.parse(newData)), null, 2);
+		}
+	}
+	fs.writeFileSync(file, newData);
+}
+
+function isJSON(data) {
+	try {
+		JSON.parse(data);
+		return true;
+	} catch (err) { return false; }
 }

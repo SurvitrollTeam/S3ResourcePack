@@ -19,10 +19,9 @@ for (const path of getFilesRecursive(tempDir()))
 console.log("📄 Writting file...");
 zip.generateAsync({ type: 'nodebuffer' }).then(data => {
 	fs.writeFileSync(join(OUT, `${FILE}.zip`), data);
-	console.log("🔗 Generating Hash...");
 	const sum = crypto.createHash('sha1')
-		.update(data).digest('hex').toUpperCase();
-	fs.writeFileSync(join(outputDir(), `${FILE}.sha1`), sum);
+		.update(data).digest('hex');
+	fs.writeFileSync(join(outputDir(), `${FILE}.sha1`), sum.toUpperCase());
 	console.log("🔗 Checksum:", sum);
 	console.log("🔍 Cleaning project");
 	fs.rmSync(tempDir(), { recursive: true, force: true });

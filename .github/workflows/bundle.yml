@@ -10,6 +10,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v1
         with:
@@ -20,8 +22,16 @@ jobs:
       - name: Extracting Assets
         run: npm run extract
 
-      - name: Bundling Assets
-        run: npm run build
+      # - name: Bundling Assets
+      #   run: npm run build
+
+      - name: Run PackSquash
+        uses: sya-ri/action-PackSquash@v1.0.0
+        with:
+          path: temp
+          output: build/rp-production.zip
+
+      - run: sha1sum build/rp-production.zip | awk '{print toupper($1)}' > build/rp-production.sha1
 
       - name: Deploy
         uses: s0/git-publish-subdir-action@develop
