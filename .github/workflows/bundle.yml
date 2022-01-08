@@ -28,10 +28,10 @@ jobs:
       - name: Run PackSquash
         uses: ComunidadAylas/PackSquash-action@v2
         with:
-          path: temp
-          output: build/rp-production.zip
+          options_file: config.toml
 
-      - run: sha1sum build/rp-production.zip | awk '{print toupper($1)}' > build/rp-production.sha1
+      - name: Hashing Resource Pack
+        run: sha1sum build/rp-production.zip | awk '{print toupper($1)}' > build/rp-production.sha1
 
       - name: Deploy
         uses: s0/git-publish-subdir-action@develop
