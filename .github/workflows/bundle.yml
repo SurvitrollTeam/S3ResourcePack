@@ -37,8 +37,10 @@ jobs:
 
       - name: Hashing Resource Pack
         run: |
-          mv pack.zip build/rp-production.zip
-          sha1sum build/rp-production.zip | awk '{print toupper($1)}' > build/rp-production.sha1
+          cp /var/lib/packsquash/pack.zip ./build/rp-production.zip
+          RPSUM=$(sha1sum build/rp-production.zip | awk '{print toupper($1)}')
+          echo "$RPSUM" > build/rp-production.sha1
+          echo "🔗 Checksum: $RPSUM"
 
       - name: Deploy
         uses: s0/git-publish-subdir-action@develop
