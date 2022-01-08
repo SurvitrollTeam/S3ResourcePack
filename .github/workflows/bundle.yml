@@ -27,9 +27,8 @@ jobs:
 
       - name: Setting up
         run: |
-          rm -rf build/
-          mkdir build/
-          echo "📦 Bundling files..."
+          rm -rf ./build
+          mkdir ./build
 
       - name: Run PackSquash
         uses: ComunidadAylas/PackSquash-action@v2
@@ -37,7 +36,8 @@ jobs:
           options_file: config.toml
 
       - name: Hashing Resource Pack
-        run: sha1sum build/rp-production.zip | awk '{print toupper($1)}' > build/rp-production.sha1
+        run: |
+          sha1sum build/rp-production.zip | awk '{print toupper($1)}' > build/rp-production.sha1
 
       - name: Deploy
         uses: s0/git-publish-subdir-action@develop
