@@ -25,6 +25,12 @@ jobs:
       # - name: Bundling Assets
       #   run: npm run build
 
+      - name: Setting up
+        run: |
+          rm -rf build/
+          mkdir build/
+          echo "📦 Bundling files..."
+
       - name: Run PackSquash
         uses: ComunidadAylas/PackSquash-action@v2
         with:
