@@ -34,10 +34,16 @@ jobs:
         with:
           path: temp
           transcode_ogg: false
+      
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: Optimized pack
+          path: ./
 
       - name: Hashing Resource Pack
         run: |
-          cp /var/lib/packsquash/pack.zip ./build/rp-production.zip
+          cp ./pack.zip ./build/rp-production.zip
           RPSUM=$(sha1sum build/rp-production.zip | awk '{print toupper($1)}')
           echo "$RPSUM" > build/rp-production.sha1
           echo "🔗 Checksum: $RPSUM"
