@@ -27,12 +27,12 @@ jobs:
 
       - name: Setting up
         run: |
-          rm -rf ./build
           mkdir ./build
 
       - name: Run PackSquash
         uses: ComunidadAylas/PackSquash-action@v2
         with:
+          path: "temp"
           options_file: config.toml
 
       - name: Hashing Resource Pack
